@@ -13,20 +13,20 @@
 
    <link rel="stylesheet" href="styles.css">
    <script src="script.js" defer></script>
-   <title>Restaurant POS</title>
+   <title>CharNoir POS</title>
 </head>
 
 <body>
    <header>
-      <h1>Restaurant POS</h1>
+      <h1>CharNoir POS</h1>
    </header>
    <main class="main-container flex-row">
       <section class="order flex-column">
          <article class="receipt flex-column">
             <div class="company-info flex-column">
-               <p id="company-name">The Awesome Cafe</p>
-               <p id="company-address">123 Elm St.</p>
-               <p id="company-city">New York, NY</p>
+               <p id="company-name">CharNoir Cafe</p>
+               <p id="company-address">123 dindaeng St.</p>
+               <p id="company-city">Bangkok, TH</p>
                <p id="company-phone">000-000-0000</p>
                <p id="invoice-number"></p>
             </div>
@@ -41,10 +41,10 @@
                      </tr>
                      <tr>
                         <th class="description">Description</th>
-                        <th class="quantity">Qty</th>
+                        <th class="quantity">Quantity</th>
                         <th class="price">Price</th>
-                        <th class="subtotal">Sub</th>
-                        <th class="delate">Del</th>
+                        <th class="subtotal">Subtotal</th>
+                        <th class="delete">Del</th>
                      </tr>
                      <tr>
                         <td class="dotted-border" colspan="5"></td>
@@ -60,7 +60,7 @@
                         <td class="price">$12.9</td>
                         <td class="subtotal">$12.99</td>
                         <td class="delete"><i class="fa-solid fa-delete-left"></i></td>
-                     </tr>tr> -->
+                     </tr> -->
                   </tbody>
                </table>
             </div>
@@ -91,7 +91,7 @@
                   </tbody>
                   <tbody class="summary-table" id="payment-summary">
                      <tr>
-                        <td>Amt Paid:</td>
+                        <td>Amount Paid:</td>
                         <td id="amount-paid">$0.00</td>
                         <td></td>
                      </tr>
@@ -116,7 +116,7 @@
             </div>
             <div class="receipt-footer flex-column">
                <p id="receipt-message">Thank For You Business</p>
-               <p id="barcode">Barcode</p>
+               <p id="barcode">CharNoir</p>
             </div>
          </article>
          <div class="toolbar flex-row">
@@ -143,7 +143,10 @@
                <button class="paypad-btn number" data-id="0">0</button>
                <button class="paypad-btn " data-id="back">back</button>
                <button class="paypad-btn " data-id="clear">Clear</button>
-               <button class="paypad-btn span3-col" id="close-sale" data-id="close-sale">Close Sale</button>
+               <button class="paypad-btn span3-col" id="close-sale" data-id="close-sale">
+                  Close Sale
+                  <i class="fa-solid fa-print print"></i>
+               </button>
             </div>
             <div class="close-paypad flex">
                <i class="fa-solid fa-xmark close-icon paypad-close" id="paypad-close"></i>
@@ -151,6 +154,106 @@
          </div>
       </section>
    </main>
+
+   <div class="print-bill">
+      <section class="bill-order flex-column">
+         <article class="bill-receipt flex-column">
+            <div class="company-info flex-column">
+               <p id="bill-company-name">CharNoir Cafe</p>
+               <p id="bill-company-address">123 dindaeng St.</p>
+               <p id="bill-company-city">Bangkok, TH</p>
+               <p id="bill-company-phone">000-000-0000</p>
+               <p id="bill-invoice-number"></p>
+            </div>
+            <div class="receipt-details">
+               <table class="details-detail">
+                  <thead>
+                     <tr>
+                        <td class="dotted-border" colspan="4"></td>
+                     </tr>
+                     <tr>
+                        <td class="empty-border" colspan="4"></td>
+                     </tr>
+                     <tr>
+                        <th class="bill-description">Description</th>
+                        <th class="bill-quantity">Quantity</th>
+                        <th class="bill-price">Price</th>
+                        <th class="bill-subtotal">Subtotal</th>
+                     </tr>
+                     <tr>
+                        <td class="dotted-border" colspan="4"></td>
+                     </tr>
+                     <tr>
+                        <td class="empty-border" colspan="4"></td>
+                     </tr>
+                  </thead>
+                  <tbody id="bill-receipt-details">
+                     <tr>
+                        <td class="bill-description">Fries</td>
+                        <td class="bill-quantity">1</td>
+                        <td class="bill-price">$12.9</td>
+                        <td class="bill-subtotal">$12.99</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="receipt-summary">
+               <table class="summary-table">
+                  <tbody class="summary-table" id="total-summary">
+                     <tr>
+                        <td class="dotted-border" colspan="3"></td>
+                     </tr>
+                     <tr>
+                        <td class="empty-border" colspan="3"></td>
+                     </tr>
+                     <tr>
+                        <td>Subtotal:</td>
+                        <td id="bill-subtotal-summary">$0.00</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>Tax:</td>
+                        <td id="bill-tax-summary">$0.00</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>Grand Total:</td>
+                        <td id="bill-grandtotal-summary">$0.00</td>
+                        <td></td>
+                     </tr>
+                  </tbody>
+                  <tbody class="summary-table" id="bill-payment-summary">
+                     <tr>
+                        <td>Amount Paid:</td>
+                        <td id="bill-amount-paid">$0.00</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td id="bill-tip-change-title">Change:</td>
+                        <td id="bill-tip-change-value">$0.00</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>Payment Type:</td>
+                        <td id="bill-payment-type"></td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td class="dotted-border" colspan="3"></td>
+                     </tr>
+                     <tr>
+                        <td class="empty-border" colspan="3"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="receipt-footer flex-column">
+               <p id="bill-receipt-message">Thank For You Business</p>
+               <p id="barcode">CharNoir</p>
+            </div>
+         </article>
+      </section>
+   </div>
 </body>
 
 </html>

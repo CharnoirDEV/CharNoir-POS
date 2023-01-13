@@ -132,7 +132,7 @@ class Order {
       const orderGrandTotal = this.getSummary().grandtotal;
       if (input.amountPaid != null) this.payment.amountPaid = parseFloat(input.amountPaid);
       if (input.type != null) this.payment.type = input.type;
-      if (this.payment.amountPaid > orderGrandTotal) {
+      if (this.payment.amountPaid >= orderGrandTotal && orderGrandTotal != 0) {
          this.payment.changeTip = this.payment.amountPaid - orderGrandTotal;
          Ui.closebutton(false);
       } else {
@@ -205,7 +205,7 @@ class Ui {
       let frag = document.createDocumentFragment();
 
       orderInstance.menu.forEach(item => {
-         let menuElement = `<img src="${item.image}" alt="${item.description}" class="menu-img" style="width:150px;">
+         let menuElement = `<img src="${item.image}" alt="${item.description}" class="menu-img" style="width:6em; height:6em;">
                            <figcaption>${item.description}</figcaption>
                            <figcaption>${Utilities.convertFloatToString(item.price)}</figcaption>`
 
@@ -235,6 +235,7 @@ class Ui {
       let frag = document.createDocumentFragment();
 
       orderInstance.order.forEach((orderLine, index) => {
+         console.log(index.toString())
          let receiptLine = ` <td class="description">${orderLine.description}</td>
          <td class="quantity">${orderLine.quantity}</td>
          <td class="price">${Utilities.convertFloatToString(orderLine.price)}</td>
@@ -266,6 +267,7 @@ class Ui {
       orderInstance.generateInvoiceNumber();
       const invoiceNumber = orderInstance.invoiceNumber;
       document.getElementById('invoice-number').textContent = `Invoice# ${invoiceNumber}`
+      document.getElementById('bill-invoice-number').textContent = `Invoice# ${invoiceNumber}`
    }
 
    static summary(orderInstance) {
@@ -324,10 +326,10 @@ class Utilities {
    static convertFloatToString(float) {
       let priceParams = {
          style: "currency",
-         currency: "USD"
+         currency: "THB"
       }
 
-      return float.toLocaleString("en-us", priceParams)
+      return float.toLocaleString("th-th", priceParams)
    }
 
    static roundToTwo(num) {
@@ -342,6 +344,38 @@ class Utilities {
       } else if (input === "clear") {
          this.clearPaypad(orderInstance);
       } else {
+         //set order to bill
+         let bill = document.getElementById('bill-receipt-details');
+         let order_detail = document.getElementById("receipt-details");
+         document.querySelectorAll('.fa-delete-left').forEach(e => { e.remove() })
+         bill.innerHTML = order_detail.innerHTML
+
+         //set summary to bill
+         //POS
+         const subtotal = document.getElementById("subtotal-summary").textContent;
+         const tax = document.getElementById('tax-summary').textContent;
+         const grandtotal = document.getElementById("grandtotal-summary").textContent;
+         const amountPaid = document.getElementById("amount-paid").textContent;
+         const change = document.getElementById("tip-change-value").textContent;
+         const payment = document.getElementById("payment-type").textContent;
+
+         //bill
+         let bill_subtotal = document.getElementById("bill-subtotal-summary");
+         let bill_tax = document.getElementById('bill-tax-summary');
+         let bill_grandtotal = document.getElementById("bill-grandtotal-summary");
+         let bill_amountPaid = document.getElementById("bill-amount-paid");
+         let bill_change = document.getElementById("bill-tip-change-value");
+         let bill_payment = document.getElementById("bill-payment-type");
+
+         bill_subtotal.textContent = subtotal;
+         bill_tax.textContent = tax;
+         bill_grandtotal.textContent = grandtotal;
+         bill_amountPaid.textContent = amountPaid;
+         bill_change.textContent = change;
+         bill_payment.textContent = payment;
+
+         //open windows to
+         window.print()
          orderInstance.closeSale();
       }
    }
@@ -374,9 +408,14 @@ class Utilities {
 }
 //-------------------------MOCK DATA
 const menuData = [
-   [101, 'Hamburger', 10.99, 0.05, 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=999&q=80'],
-   [102, 'Fries', 6.99, 0.05, 'https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'],
-   [103, 'Salad', 9.5, 0.05, 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80']
+   [101, 'BLACK', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
+   [102, 'AMERICANO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
+   [103, 'ESPRESSO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
+   [104, 'LATTE', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
+   [105, 'CAPPUCCINO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
+   [106, 'MACCHIATO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
+   [107, 'MOCHA', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
+   [108, 'IRISH', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
 ];
 
 const previousSaleData = [

@@ -20,7 +20,7 @@ body {
 
 header {
    background-color: rgb(255, 255, 255, .1);
-   color: #a7e1ee;
+   color: #ffe4a8;
    font-size: smaller;
 }
 
@@ -91,16 +91,24 @@ main {
 }
 
 th.description {
-   width: 180px;
+   width: 170px;
    text-align: left;
 }
 
-th.price {
+th.quantity {
    width: 70px;
+}
+
+th.price {
+   width: 75px;
 }
 
 th.subtotal {
    width: 75px;
+}
+
+th.delete {
+   width: 40px;
 }
 
 .quantity,
@@ -113,6 +121,14 @@ th.subtotal {
 .receipt-details {
    margin-top: 10px;
    flex-grow: 1;
+}
+
+.delete {
+   font-size: 1.2rem;
+}
+
+.delete:hover {
+   cursor: pointer;
 }
 
 .dotted-border {
@@ -210,7 +226,7 @@ figcaption {
    transform: scale(1.03);
 }
 
-#payment-overlay{
+#payment-overlay {
    display: none;
    grid-column: 1;
    grid-row: 1;
@@ -221,7 +237,7 @@ figcaption {
    background: rgba(255, 255, 255, .05);
 }
 
-.paypad{
+.paypad {
    margin: 10px 0 0 10px;
    align-content: center;
    grid-column: 1;
@@ -229,24 +245,110 @@ figcaption {
    grid-template-rows: repeat(5, 100px);
 }
 
-.span3-col{
+.span3-col {
    grid-column: span 3;
 }
 
-#close-sale{
+#close-sale {
    display: none;
 }
 
-.paypad-btn.number{
+.paypad-btn.number {
    font-size: 2rem;
 }
 
-.close-icon{
+.close-icon {
    color: white;
    font-size: 3rem;
-   margin:  150px 0 0 15px;
+   margin: 150px 0 0 15px;
 }
 
-.close-icon:hover{
+.close-icon:hover {
    transform: scale(1.03);
+}
+
+.print {
+   font-size: 5em;
+}
+
+/* print */
+.print-bill {
+   display: none;
+   width: 60mm;
+   height: 150mm;
+}
+
+#bill-company-name,
+#bill-company-phone {
+   font-size: 1em;
+}
+
+#bill-company-address,
+#bill-company-city,
+#bill-invoice-number {
+   font-size: 0.75em;
+}
+
+th.bill-quantity,
+th.bill-price,
+th.bill-subtotal,
+td.bill-quantity,
+td.bill-price,
+td.bill-subtotal{
+   font-size: 0.65rem;
+   text-align: center;
+}
+
+
+th.bill-description,
+td.bill-description{
+   font-size: 0.60rem;
+   width: 75px;
+   text-align: left;
+}
+
+th.bill-quantity{
+   width: 40px;
+}
+
+th.bill-price{
+   width: 40px;
+}
+
+th.bill-subtotal{
+   width: 70px;
+}
+.summary-table,#bill-receipt-details,#bill-receipt-message{
+   font-size: 1.2rem;
+}
+
+.bill-order{
+   background-color: white;
+   flex: 0 0 440px;
+   overflow: auto;
+   margin: 0px 10px 5px 10px;
+   height: 100%;
+   max-height: 100%;
+}
+
+@media print {
+   .summary-table,#bill-receipt-details,#bill-receipt-message{
+      font-size: 0.65rem;
+   }
+
+   header{
+      display: none;
+   }
+   .main-container{
+      display: none;
+   }
+
+   .print-bill {
+      display: contents;
+   }
+
+   @page {
+      size: 57.5mm 150mm;
+      margin: 0mm;
+   }
 }
