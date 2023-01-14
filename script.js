@@ -87,6 +87,7 @@ class Order {
    addOrderLine(quantity, data) {
       let currentLine = {};
       let lineData = JSON.parse(data)
+      let productExists = false;
 
       currentLine.sku = lineData.sku;
       currentLine.description = lineData.description;
@@ -95,7 +96,21 @@ class Order {
       currentLine.subtotal = currentLine.quantity * currentLine.price;
       currentLine.tax = Utilities.roundToTwo(lineData.taxRate * currentLine.subtotal);
 
-      this.order.push(currentLine);
+      if (this.order.length > 0) {
+         for (let item of this.order) {
+            if (currentLine.sku == item.sku) {
+               item.quantity += 1;
+               item.subtotal = item.quantity * item.price;
+               productExists = true;
+               break;
+            }
+         }
+         if (!productExists) {
+            this.order.push(currentLine);
+         }
+      } else {
+         this.order.push(currentLine);
+      }
       Ui.receiptDetails(this);
    }
 
@@ -235,7 +250,7 @@ class Ui {
       let frag = document.createDocumentFragment();
 
       orderInstance.order.forEach((orderLine, index) => {
-         console.log(index.toString())
+         // console.log(orderLine.sku)
          let receiptLine = ` <td class="description">${orderLine.description}</td>
          <td class="quantity">${orderLine.quantity}</td>
          <td class="price">${Utilities.convertFloatToString(orderLine.price)}</td>
