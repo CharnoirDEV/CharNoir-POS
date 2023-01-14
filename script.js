@@ -423,25 +423,22 @@ class Utilities {
 }
 //-------------------------MOCK DATA
 const menuData = [
-   [101, 'BLACK', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
-   [102, 'AMERICANO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
-   [103, 'ESPRESSO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
+   [101, 'BLACK', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
+   [102, 'AMERICANO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
+   [103, 'ESPRESSO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
    [104, 'LATTE', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
-   [105, 'CAPPUCCINO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
-   [106, 'MACCHIATO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
-   [107, 'MOCHA', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
-   [108, 'IRISH', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
+   [105, 'CAPPUCCINO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
+   [106, 'MACCHIATO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
+   [107, 'MOCHA', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
+   [108, 'IRISH', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
 ];
 
 const previousSaleData = [
-   ["", 4999, 101.0, 1.0, 10.99, 0.5495],
-   ["", 4999, 102.0, 2.0, 7.99, 0.3975],
-   ["", 4999, 103.0, 3.0, 8.99, 0.45]
+   ["", 1, 101.0, 1.0, 10.99, 0.5495],
 ];
 
 const paymentData = [
-   ["", 4999, 56.46, "cc", 5.00],
-   ["", 5000, 13.59, "cash", 0]
+   ["", 1, 13.59, "cash", 0]
 ];
 
 //-------------------------ORDER INSTANTIATION
