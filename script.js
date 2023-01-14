@@ -426,7 +426,7 @@ const menuData = [
    [101, 'BLACK', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
    [102, 'AMERICANO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
    [103, 'ESPRESSO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
-   [104, 'LATTE', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1QdUA-29ZFG7mwLV16DrdQV9DL8fjecIy'],
+   [104, 'LATTE', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
    [105, 'CAPPUCCINO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
    [106, 'MACCHIATO', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
    [107, 'MOCHA', 40.00, 0.00, 'https://drive.google.com/uc?export=view&id=1gdc3jhKi3quuvtPAFsVEblosGf6GLwwg'],
